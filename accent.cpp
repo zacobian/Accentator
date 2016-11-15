@@ -95,8 +95,6 @@ void Cyprator::express_text() {
 
 int main () {
   string text;  
-  //wstring exam = L"sdf";
-  //wcout << exam << endl;
   cout << "Please write a text of your choice\n";
   getline(cin,text);
   cout << "The text you enter is: " << text << endl;
