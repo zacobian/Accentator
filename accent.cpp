@@ -30,27 +30,26 @@ class Salonicator: public Accentator {
  
 void Salonicator::express_text() {
   	
-  	int length = this->text.size(); 
-  	//cout<< length<<endl;   
+   int length = this->text.size(); 
    int found[length]; 
    string key = "l";
    found[0]= this->text.find_first_of(key);
    string change = "l";
    
-	for (int i=0; i<length; i++)
+   for (int i=0; i<length; i++)
    {
   	 
     if (found[i]==string::npos){break;}
-    //cout<<found[i-1]<<endl;
+   
     if (text[found[i]+1] != 'l') 
     {this->text.insert(found[i], change);}    
      
     found[i+1]=this->text.find_first_of(key,found[i]+2);
     
-  	}
+   }
   	
-  	cout << "A guy from Thessaloniki pronounce this text like this: ";
-  	cout << this->text << endl;
+   cout << "A guy from Thessaloniki pronounce this text like this: ";
+   cout << this->text << endl;
 
 }
 
@@ -75,9 +74,9 @@ void Cyprator::express_text() {
    letterI[0] = this->text.find(key2);
    string change = "n";
    
-	for(int i=0; i<length; i++)
+   for(int i=0; i<length; i++)
    {
-      if (letterO[i]==string::npos){ break; }  
+        if (letterO[i]==string::npos){ break; }  
     	this->text.insert(letterO[i]+1, change);
     	letterO[i+1]=this->text.find(key1,letterO[i]+1);
    } 
@@ -85,11 +84,11 @@ void Cyprator::express_text() {
    for(int i=0; i<length; i++)
    { 
     	if(letterI[i]==string::npos) { break; }
-      this->text.insert(letterI[i]+1, change);  
+        this->text.insert(letterI[i]+1, change);  
     	letterI[i+1]=this->text.find(key2,letterI[i]+1); 
-  	}
+   }
   	
-  	cout << "A guy from Cyprus pronounce this text like this: ";
+   cout << "A guy from Cyprus pronounce this text like this: ";
    cout << this->text << endl;
   
 }
