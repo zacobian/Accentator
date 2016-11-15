@@ -31,8 +31,7 @@ class Salonicator: public Accentator {
 void Salonicator::express_text() {
   	
   	
-  	int length = this->text.size(); 
-  	//cout<< length<<endl;   
+   int length = this->text.size();   
    int found[length]; 
    found[0]= this->text.find_first_of("l");
    string change = "l";
@@ -41,14 +40,13 @@ void Salonicator::express_text() {
    {
   	 
     if (found[i-1]==string::npos){break;}
-    //cout<<found[i-1]<<endl;
     this->text.insert(found[i-1], change);     
     found[i]=this->text.find_first_of("l",found[i-1]+2);
     
-  	}
+    }
   	
-  	cout << "A guy from Thessaloniki pronounce this text like this: ";
-  	cout << this->text << endl;
+    cout << "A guy from Thessaloniki pronounce this text like this: ";
+    cout << this->text << endl;
 
 }
 
@@ -62,8 +60,7 @@ class Cyprator: public Accentator {
   
 void Cyprator::express_text() {
 	
-   int length = this->text.size(); 
-  	//cout<< length<<endl;   
+   int length = this->text.size();  
    int found[length]; 
    found[0]= this->text.find_first_of("oi");
    string change = "n";
@@ -72,12 +69,12 @@ void Cyprator::express_text() {
    {
   	 
     if (found[i-1]==string::npos){break;}
-    //cout<<found[i-1]<<endl;
     this->text.insert(found[i-1]+1, change);     
     found[i]=this->text.find_first_of("oi",found[i-1]+2);
     
-  	}
-  	cout << "A guy from Cyprus pronounce this text like this: ";
+   }
+	
+   cout << "A guy from Cyprus pronounce this text like this: ";
    cout << this->text << endl;
   
 }
