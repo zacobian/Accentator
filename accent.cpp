@@ -30,23 +30,27 @@ class Salonicator: public Accentator {
  
 void Salonicator::express_text() {
   	
-  	
-   int length = this->text.size();   
+  	int length = this->text.size(); 
+  	//cout<< length<<endl;   
    int found[length]; 
-   found[0]= this->text.find_first_of("l");
+   string key = "l";
+   found[0]= this->text.find_first_of(key);
    string change = "l";
    
-	for (int i=1; i<length; i++)
+	for (int i=0; i<length; i++)
    {
   	 
-    if (found[i-1]==string::npos){break;}
-    this->text.insert(found[i-1], change);     
-    found[i]=this->text.find_first_of("l",found[i-1]+2);
+    if (found[i]==string::npos){break;}
+    //cout<<found[i-1]<<endl;
+    if (text[found[i]+1] != 'l') 
+    {this->text.insert(found[i], change);}    
+     
+    found[i+1]=this->text.find_first_of(key,found[i]+2);
     
-    }
+  	}
   	
-    cout << "A guy from Thessaloniki pronounce this text like this: ";
-    cout << this->text << endl;
+  	cout << "A guy from Thessaloniki pronounce this text like this: ";
+  	cout << this->text << endl;
 
 }
 
@@ -60,28 +64,40 @@ class Cyprator: public Accentator {
   
 void Cyprator::express_text() {
 	
-   int length = this->text.size();  
-   int found[length]; 
-   found[0]= this->text.find_first_of("oi");
+   int length = this->text.size();        // change the text's length and fill it with ' ', so as if 
+   this->text.resize(length+1, ' ');      // one of the letters o,i is in the and of the string text
+   length = this->text.size();            // the match with the keys will be achieved
+   
+   int letterO[length], letterI[length]; 
+   string key1 = "o ";
+   string key2 = "i ";
+   letterO[0] = this->text.find(key1);
+   letterI[0] = this->text.find(key2);
    string change = "n";
    
-	for (int i=1; i<length; i++)
+	for(int i=0; i<length; i++)
    {
-  	 
-    if (found[i-1]==string::npos){break;}
-    this->text.insert(found[i-1]+1, change);     
-    found[i]=this->text.find_first_of("oi",found[i-1]+2);
-    
-   }
-	
-   cout << "A guy from Cyprus pronounce this text like this: ";
+      if (letterO[i]==string::npos){ break; }  
+    	this->text.insert(letterO[i]+1, change);
+    	letterO[i+1]=this->text.find(key1,letterO[i]+1);
+   } 
+   
+   for(int i=0; i<length; i++)
+   { 
+    	if(letterI[i]==string::npos) { break; }
+      this->text.insert(letterI[i]+1, change);  
+    	letterI[i+1]=this->text.find(key2,letterI[i]+1); 
+  	}
+  	
+  	cout << "A guy from Cyprus pronounce this text like this: ";
    cout << this->text << endl;
   
 }
 
 int main () {
   string text;  
-  
+  //wstring exam = L"sdf";
+  //wcout << exam << endl;
   cout << "Please write a text of your choice\n";
   getline(cin,text);
   cout << "The text you enter is: " << text << endl;
