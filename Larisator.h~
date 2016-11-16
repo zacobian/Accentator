@@ -1,3 +1,14 @@
+#ifndef __LARISATOR_H__
+#define __LARISATOR_H__
+
+#include "Accentator.h"
+
+
+class Larisator: public Accentator {
+public:
+    Larisator(string t) {text=t;}
+    void pronounce_text();
+};
 
 void Larisator::pronounce_text() {
 
@@ -34,4 +45,4 @@ void Larisator::pronounce_text() {
     cout << "A guy from Larisa pronounce this text like this: ";
     cout << this->text << endl;
 }
-
+#endif

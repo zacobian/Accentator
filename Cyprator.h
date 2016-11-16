@@ -11,4 +11,7 @@ public:
     Cyprator(string t) {text = t;}
     void pronounce_text();
 };
+
+#include "Cyprator.cpp"
+
 #endif

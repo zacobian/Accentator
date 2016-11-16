@@ -9,4 +9,7 @@ public:
     Larisator(string t) {text=t;}
     void pronounce_text();
 };
+
+#include "Larisator.cpp"
+
 #endif

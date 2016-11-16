@@ -1,3 +1,16 @@
+#ifndef __CYPRATOR_H__
+#define __CYPRATOR_H__
+
+
+
+#include "Accentator.h"
+
+
+class Cyprator: public Accentator {
+public:
+    Cyprator(string t) {text = t;}
+    void pronounce_text();
+};
 
 void Cyprator::pronounce_text() {
 
@@ -29,3 +42,5 @@ void Cyprator::pronounce_text() {
         cout << "A guy from Cyprus pronounce this text like this: ";
         cout << this->text << endl;
 }
+
+#endif

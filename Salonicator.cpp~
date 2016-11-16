@@ -4,18 +4,18 @@ void Salonicator::pronounce_text() {
 
     int length = this->text.size();
 
-    int found;
+    int found[length];
     string key = "l";
-    found = this->text.find_first_of(key);
+    found[0] = this->text.find_first_of(key);
     string change = "l";
 
     for (int i = 0; i < length; i++) {
 
-        if (found == string::npos) { break; }
+        if (found[i] == string::npos) { break; }
 
-        if (text[found + 1] != 'l') { this->text.insert(found, change); }
+        if (text[found[i] + 1] != 'l') { this->text.insert(found[i], change); }
 
-        found = this->text.find_first_of(key, found + 2);
+        found[i + 1] = this->text.find_first_of(key, found[i] + 2);
 
     }
 
